@@ -192,6 +192,49 @@
     line-height: 1.5;
     padding-left: 28px;
   }
+  .radio-option {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 0;
+    cursor: pointer;
+    border-bottom: 1px solid var(--border);
+  }
+  .radio-option:last-of-type {
+    border-bottom: none;
+  }
+  .radio-option input[type="radio"] {
+    margin-top: 3px;
+    cursor: pointer;
+    accent-color: var(--blue);
+  }
+  .radio-option-body {
+    flex: 1;
+  }
+  .radio-option-title {
+    font-weight: 600;
+    font-size: 15px;
+    margin-bottom: 4px;
+    color: var(--navy);
+  }
+  .radio-option-desc {
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 1.5;
+  }
+  .calendar-link-field {
+    margin-top: 8px;
+    padding: 14px 16px;
+    background: var(--blue-light);
+    border-radius: 8px;
+    display: none;
+  }
+  .calendar-link-field.visible {
+    display: block;
+  }
+  .calendar-link-field label {
+    margin-bottom: 6px;
+  }
   .days {
     display: flex;
     flex-wrap: wrap;
@@ -305,6 +348,21 @@
     color: #78350f;
     margin-top: 8px;
     line-height: 1.5;
+  }
+  .dev-note {
+    background: #fef3c7;
+    border: 1.5px dashed #f59e0b;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    font-size: 12.5px;
+    color: #78350f;
+    line-height: 1.5;
+  }
+  .dev-note strong {
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
   }
 </style>
 </head>
@@ -478,10 +536,43 @@
     </div>
   </div>
 
-  <!-- SECTION 5: ANYTHING ELSE -->
+  <!-- SECTION 5: INTERVIEW COORDINATION -->
+  <div class="dev-note">
+    <strong>DEV NOTE</strong> — Hide this section entirely for Core members. Sagan coordinates scheduling by default for Core; the TA can ask about preferences during the kickoff call.
+  </div>
   <div class="section">
     <div class="section-header">
       <span class="section-num">05</span>
+      <h2>Interview coordination</h2>
+    </div>
+    <p class="hint">How would you like us to connect you with candidates you choose to interview?</p>
+
+    <label class="radio-option">
+      <input type="radio" name="connect-method" value="email" onchange="toggleCalendarLink(false)" />
+      <div class="radio-option-body">
+        <div class="radio-option-title">Email introduction</div>
+        <div class="radio-option-desc">We'll introduce you and the candidate via email. You handle the scheduling from there.</div>
+      </div>
+    </label>
+
+    <label class="radio-option">
+      <input type="radio" name="connect-method" value="link" onchange="toggleCalendarLink(true)" />
+      <div class="radio-option-body">
+        <div class="radio-option-title">Share your scheduling link</div>
+        <div class="radio-option-desc">We'll send candidates your calendar link so they can book a time directly.</div>
+      </div>
+    </label>
+
+    <div class="calendar-link-field" id="calendarLinkField">
+      <label>Your calendar link <span class="req">*</span></label>
+      <input type="text" placeholder="Example: https://calendly.com/your-name" />
+    </div>
+  </div>
+
+  <!-- SECTION 6: ANYTHING ELSE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
       <h2>Anything else?</h2>
     </div>
     <p class="hint">Optional. Anything we haven't asked, plus any files (JD, org chart, sample work).</p>
@@ -498,10 +589,10 @@
     </div>
   </div>
 
-  <!-- SECTION 6: AGREEMENT -->
+  <!-- SECTION 7: AGREEMENT -->
   <div class="section">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">07</span>
       <h2>Agreement</h2>
     </div>
     <p class="hint">One box to check before we start.</p>
@@ -524,6 +615,10 @@
 <script>
   function toggleDay(el) {
     el.classList.toggle('selected');
+  }
+
+  function toggleCalendarLink(show) {
+    document.getElementById('calendarLinkField').classList.toggle('visible', show);
   }
 </script>
 
