@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Sagan — New Hiring Request</title>
+<title>Sagan | New Hiring Request</title>
 <style>
   :root {
     --navy: #0a1628;
@@ -319,12 +319,12 @@
 
   <div class="estimate">
     <span class="dot"></span>
-    Takes about 4 minutes
+    Takes about 5 minutes
   </div>
 
   <div class="intro">
     <h1>Let's find the right person.</h1>
-    <p>Tell us about the role, your budget, and how you'd like us to focus the search. The sharper your answers, the better the match.</p>
+    <p>Tell us about the role and your budget. The sharper your answers, the better the match.</p>
   </div>
 
   <!-- SECTION 1: CONTACT + ROLE TITLE -->
@@ -333,7 +333,7 @@
       <span class="section-num">01</span>
       <h2>Your details</h2>
     </div>
-    <p class="hint">So we know who to talk to.</p>
+    <p class="hint">Who you are and how to reach you.</p>
 
     <div class="row">
       <div class="field">
@@ -341,15 +341,21 @@
         <input type="text" placeholder="Jane Doe" />
       </div>
       <div class="field">
-        <label>Email <span class="req">*</span></label>
-        <input type="email" placeholder="jane@company.com" />
+        <label>Your role <span class="req">*</span></label>
+        <input type="text" placeholder="Example: Hiring Manager, Head of Operations, CEO" />
       </div>
     </div>
     <div class="row">
       <div class="field">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" placeholder="jane@company.com" />
+      </div>
+      <div class="field">
         <label>Phone <span class="req">*</span></label>
         <input type="tel" placeholder="+1 555 123 4567" />
       </div>
+    </div>
+    <div class="row">
       <div class="field">
         <label>Preferred channel</label>
         <select>
@@ -358,10 +364,10 @@
           <option>Phone</option>
         </select>
       </div>
-    </div>
-    <div class="field">
-      <label>Anyone else to CC?</label>
-      <input type="text" placeholder="Comma-separated emails (optional)" />
+      <div class="field">
+        <label>Anyone else to CC?</label>
+        <input type="text" placeholder="Comma-separated emails (optional)" />
+      </div>
     </div>
   </div>
 
@@ -371,23 +377,35 @@
       <span class="section-num">02</span>
       <h2>About the role</h2>
     </div>
-    <p class="hint">Two short answers in your own words. Skip the polished job description — we want what's actually in your head.</p>
+    <p class="hint">A few short answers in your own words. Skip the polished job description. We want what's actually in your head.</p>
 
     <div class="field">
       <label>What would you call this role internally? <span class="req">*</span></label>
-      <input type="text" placeholder="e.g., CRM Coordinator, Junior Bookkeeper" />
+      <input type="text" placeholder="Example: Executive Assistant, CRM Coordinator, Junior Bookkeeper, Marketing Manager" />
     </div>
 
     <div class="field">
       <label>What will this person do day-to-day? <span class="req">*</span></label>
       <div class="sublabel">Two or three sentences is plenty.</div>
-      <textarea placeholder="Example: They'll own our CRM hygiene — cleaning records, building views for the sales team, and running weekly reports. Most days are split between Salesforce and Slack."></textarea>
+      <textarea placeholder="Example: They'll own our CRM hygiene by cleaning records, building views for the sales team, and running weekly reports. Most days are split between Salesforce and Slack."></textarea>
     </div>
 
     <div class="field">
       <label>What's the #1 thing they must be great at? <span class="req">*</span></label>
       <div class="sublabel">If you could only test for one thing, what would it be?</div>
       <input type="text" placeholder="Example: Pattern-spotting in messy data" />
+    </div>
+
+    <div class="field">
+      <label>How will you measure success?</label>
+      <div class="sublabel">One or two specific metrics, if you have them in mind.</div>
+      <input type="text" placeholder="Example: CRM data is 95% accurate every Friday" />
+    </div>
+
+    <div class="field">
+      <label>Any non-negotiable skills or certifications?</label>
+      <div class="sublabel">Hard requirements only. Leave blank if none.</div>
+      <input type="text" placeholder="Example: 3+ years in Salesforce" />
     </div>
   </div>
 
@@ -397,7 +415,7 @@
       <span class="section-num">03</span>
       <h2>Budget & scope</h2>
     </div>
-    <p class="hint">Quick numbers.</p>
+    <p class="hint">Budget and location.</p>
 
     <div class="row">
       <div class="field">
@@ -413,51 +431,18 @@
     <div class="field">
       <label>Are there any regions you don't want to hire from?</label>
       <div class="sublabel">By default, we search globally. Leave blank to search everywhere (recommended).</div>
-      <input type="text" placeholder="e.g., India, Eastern Europe" />
+      <input type="text" placeholder="Example: India, Eastern Europe" />
     </div>
 
     <div class="helper-note">
-      Each region you exclude extends the search timeline and shrinks the candidate pool. Leave blank for the strongest matches.
+      Each exclusion slows the search and shrinks the candidate pool. Leave blank to search globally.
     </div>
   </div>
 
-  <!-- SECTION 4: SEARCH PRIORITIES -->
+  <!-- SECTION 4: SCHEDULE -->
   <div class="section">
     <div class="section-header">
       <span class="section-num">04</span>
-      <h2>Search priorities — pick 2 of 3</h2>
-    </div>
-    <p class="hint">We aim to deliver on all three — speed, fit, and budget. When the market makes that hard, what should we hold firm on? Pick 2 — we'll flag any conflict before moving forward.</p>
-
-    <div class="focus-options">
-      <div class="focus-option" onclick="pickFocus(this)">
-        <div class="name">
-          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
-          Move fast
-        </div>
-        <div class="desc">Get someone in seat quickly. I'm open to stretching the budget or experience range to make that happen.</div>
-      </div>
-      <div class="focus-option" onclick="pickFocus(this)">
-        <div class="name">
-          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
-          Standout fit
-        </div>
-        <div class="desc">Bring someone with the right depth and feel for this role. I'm willing to wait longer or sit at the top of my range to land them.</div>
-      </div>
-      <div class="focus-option" onclick="pickFocus(this)">
-        <div class="name">
-          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
-          Budget discipline
-        </div>
-        <div class="desc">Stay in my range. I'm comfortable with a longer search or a hire earlier in their career.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SECTION 5: SCHEDULE -->
-  <div class="section">
-    <div class="section-header">
-      <span class="section-num">05</span>
       <h2>Schedule</h2>
     </div>
     <p class="hint">When will this person work?</p>
@@ -493,13 +478,13 @@
     </div>
   </div>
 
-  <!-- SECTION 6: ANYTHING ELSE -->
+  <!-- SECTION 5: ANYTHING ELSE -->
   <div class="section">
     <div class="section-header">
-      <span class="section-num">06</span>
+      <span class="section-num">05</span>
       <h2>Anything else?</h2>
     </div>
-    <p class="hint">Optional. Share anything we haven't asked about, or drop in a file (JD, org chart, sample work — whatever's helpful).</p>
+    <p class="hint">Optional. Anything we haven't asked, plus any files (JD, org chart, sample work).</p>
 
     <div class="field">
       <textarea placeholder="Anything else we should know..."></textarea>
@@ -513,18 +498,18 @@
     </div>
   </div>
 
-  <!-- SECTION 7: AGREEMENT -->
+  <!-- SECTION 6: AGREEMENT -->
   <div class="section">
     <div class="section-header">
-      <span class="section-num">07</span>
+      <span class="section-num">06</span>
       <h2>Agreement</h2>
     </div>
-    <p class="hint">One quick check and we're ready to start.</p>
+    <p class="hint">One box to check before we start.</p>
 
     <div class="agreement">
       <input type="checkbox" id="agree" />
       <label for="agree" style="font-weight: 400; margin: 0; color: var(--navy-soft);">
-        I agree to Sagan's <a href="#">hiring request terms</a> — including credit charges, the 5-day cancellation window, and Enhanced Search approval. <span class="req">*</span>
+        I agree to Sagan's <a href="#">hiring request terms</a>, including credit charges, the 5-day cancellation window, and Enhanced Search approval. <span class="req">*</span>
       </label>
     </div>
   </div>
@@ -537,15 +522,6 @@
 </div>
 
 <script>
-  function pickFocus(el) {
-    const selected = document.querySelectorAll('.focus-option.selected');
-    if (el.classList.contains('selected')) {
-      el.classList.remove('selected');
-    } else if (selected.length < 2) {
-      el.classList.add('selected');
-    }
-  }
-
   function toggleDay(el) {
     el.classList.toggle('selected');
   }
