@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sagan — New Hiring Request</title>
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-soft: #1e2a3d;
+    --blue: #2563eb;
+    --blue-light: #eff4ff;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --border: #e4e7ee;
+    --border-strong: #0a1628;
+    --text: #0a1628;
+    --muted: #6b7280;
+    --danger: #dc2626;
+    --green: #10b981;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .topbar {
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .logo-dot {
+    width: 28px; height: 28px; border-radius: 50%;
+    background: var(--blue);
+    box-shadow: 0 0 0 3px white, 0 0 0 4px var(--navy);
+  }
+  .logo-text { font-weight: 700; font-size: 18px; letter-spacing: -0.2px; }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+  .intro {
+    background: linear-gradient(135deg, #eff4ff 0%, #f5f7fb 100%);
+    border-left: 3px solid var(--blue);
+    padding: 24px 28px;
+    border-radius: 10px;
+    margin-bottom: 32px;
+  }
+  .intro h1 {
+    margin: 0 0 8px 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  .intro p {
+    margin: 0;
+    color: var(--navy-soft);
+    line-height: 1.55;
+    font-size: 15px;
+  }
+  .section {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px;
+    margin-bottom: 20px;
+  }
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 6px;
+  }
+  .section-num {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--blue);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .section h2 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+  }
+  .section .hint {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 4px 0 22px;
+  }
+  label {
+    display: block;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: var(--navy);
+  }
+  label .req { color: var(--danger); }
+  .sublabel {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 8px;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 15px;
+    font-family: inherit;
+    background: white;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px var(--blue-light);
+  }
+  textarea {
+    min-height: 90px;
+    resize: vertical;
+    line-height: 1.5;
+  }
+  .field { margin-bottom: 20px; }
+  .field:last-child { margin-bottom: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+  .focus-options {
+    display: grid;
+    gap: 10px;
+  }
+  .focus-option {
+    background: white;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .focus-option:hover { border-color: #94a3b8; }
+  .focus-option.selected {
+    border-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .focus-option .name {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .focus-option .check {
+    width: 18px; height: 18px;
+    border-radius: 4px;
+    border: 1.5px solid #cbd5e1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+  }
+  .focus-option.selected .check {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: white;
+  }
+  .focus-option .check svg { display: none; }
+  .focus-option.selected .check svg { display: block; }
+  .focus-option .desc {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
+    padding-left: 28px;
+  }
+  .days {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .day-chip {
+    padding: 8px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+  }
+  .day-chip.selected {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: white;
+  }
+  .upload-zone {
+    border: 1.5px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 28px 20px;
+    background: #fafbfc;
+    text-align: center;
+    color: var(--muted);
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.15s, background 0.15s;
+  }
+  .upload-zone:hover {
+    border-color: var(--blue);
+    background: var(--blue-light);
+  }
+  .upload-zone .icon {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+  .upload-zone strong {
+    color: var(--blue);
+    font-weight: 600;
+  }
+  .agreement {
+    background: #fafbfc;
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex;
+    gap: 12px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--navy-soft);
+  }
+  .agreement input { margin-top: 2px; }
+  .agreement a {
+    color: var(--blue);
+    text-decoration: underline;
+    font-weight: 500;
+  }
+  .submit-bar {
+    margin-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  .btn-primary {
+    background: var(--navy);
+    color: white;
+    border: none;
+    padding: 14px 32px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .btn-primary:hover { background: var(--navy-soft); }
+  .btn-ghost {
+    background: white;
+    color: var(--blue);
+    border: 1.5px solid var(--blue);
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .estimate {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    color: var(--muted);
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+  .estimate .dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--green);
+  }
+  .helper-note {
+    background: #fff8e6;
+    border-left: 3px solid #f59e0b;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #78350f;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="logo-dot"></div>
+  <div class="logo-text">Sagan</div>
+</div>
+
+<div class="wrap">
+
+  <div class="estimate">
+    <span class="dot"></span>
+    Takes about 4 minutes
+  </div>
+
+  <div class="intro">
+    <h1>Let's find the right person.</h1>
+    <p>Tell us about the role, your budget, and how you'd like us to focus the search. The sharper your answers, the better the match.</p>
+  </div>
+
+  <!-- SECTION 1: CONTACT + ROLE TITLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Your details</h2>
+    </div>
+    <p class="hint">So we know who to talk to.</p>
+
+    <div class="row">
+      <div class="field">
+        <label>Full name <span class="req">*</span></label>
+        <input type="text" placeholder="Jane Doe" />
+      </div>
+      <div class="field">
+        <label>Email <span class="req">*</span></label>
+        <input type="email" placeholder="jane@company.com" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="field">
+        <label>Phone <span class="req">*</span></label>
+        <input type="tel" placeholder="+1 555 123 4567" />
+      </div>
+      <div class="field">
+        <label>Preferred channel</label>
+        <select>
+          <option>Email</option>
+          <option>Text / WhatsApp</option>
+          <option>Phone</option>
+        </select>
+      </div>
+    </div>
+    <div class="field">
+      <label>Anyone else to CC?</label>
+      <input type="text" placeholder="Comma-separated emails (optional)" />
+    </div>
+  </div>
+
+  <!-- SECTION 2: THE ROLE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>About the role</h2>
+    </div>
+    <p class="hint">Two short answers in your own words. Skip the polished job description — we want what's actually in your head.</p>
+
+    <div class="field">
+      <label>What would you call this role internally? <span class="req">*</span></label>
+      <input type="text" placeholder="e.g., CRM Coordinator, Junior Bookkeeper" />
+    </div>
+
+    <div class="field">
+      <label>What will this person do day-to-day? <span class="req">*</span></label>
+      <div class="sublabel">Two or three sentences is plenty.</div>
+      <textarea placeholder="Example: They'll own our CRM hygiene — cleaning records, building views for the sales team, and running weekly reports. Most days are split between Salesforce and Slack."></textarea>
+    </div>
+
+    <div class="field">
+      <label>What's the #1 thing they must be great at? <span class="req">*</span></label>
+      <div class="sublabel">If you could only test for one thing, what would it be?</div>
+      <input type="text" placeholder="Example: Pattern-spotting in messy data" />
+    </div>
+  </div>
+
+  <!-- SECTION 3: BUDGET & SCOPE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>Budget & scope</h2>
+    </div>
+    <p class="hint">Quick numbers.</p>
+
+    <div class="row">
+      <div class="field">
+        <label>Monthly salary (USD) <span class="req">*</span></label>
+        <input type="text" placeholder="$ Min – Max" />
+      </div>
+      <div class="field">
+        <label>How many hires?</label>
+        <input type="number" placeholder="1" value="1" />
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Are there any regions you don't want to hire from?</label>
+      <div class="sublabel">By default, we search globally. Leave blank to search everywhere (recommended).</div>
+      <input type="text" placeholder="e.g., India, Eastern Europe" />
+    </div>
+
+    <div class="helper-note">
+      Each region you exclude extends the search timeline and shrinks the candidate pool. Leave blank for the strongest matches.
+    </div>
+  </div>
+
+  <!-- SECTION 4: SEARCH PRIORITIES -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Search priorities — pick 2 of 3</h2>
+    </div>
+    <p class="hint">We aim to deliver on all three — speed, fit, and budget. When the market makes that hard, what should we hold firm on? Pick 2 — we'll flag any conflict before moving forward.</p>
+
+    <div class="focus-options">
+      <div class="focus-option" onclick="pickFocus(this)">
+        <div class="name">
+          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
+          Move fast
+        </div>
+        <div class="desc">Get someone in seat quickly. I'm open to stretching the budget or experience range to make that happen.</div>
+      </div>
+      <div class="focus-option" onclick="pickFocus(this)">
+        <div class="name">
+          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
+          Standout fit
+        </div>
+        <div class="desc">Bring someone with the right depth and feel for this role. I'm willing to wait longer or sit at the top of my range to land them.</div>
+      </div>
+      <div class="focus-option" onclick="pickFocus(this)">
+        <div class="name">
+          <span class="check"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 6l3 3 5-6" stroke="white" stroke-width="2" fill="none"/></svg></span>
+          Budget discipline
+        </div>
+        <div class="desc">Stay in my range. I'm comfortable with a longer search or a hire earlier in their career.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 5: SCHEDULE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>Schedule</h2>
+    </div>
+    <p class="hint">When will this person work?</p>
+
+    <div class="field">
+      <label>Working days</label>
+      <div class="days" id="days">
+        <span class="day-chip selected" onclick="toggleDay(this)">Mon</span>
+        <span class="day-chip selected" onclick="toggleDay(this)">Tue</span>
+        <span class="day-chip selected" onclick="toggleDay(this)">Wed</span>
+        <span class="day-chip selected" onclick="toggleDay(this)">Thu</span>
+        <span class="day-chip selected" onclick="toggleDay(this)">Fri</span>
+        <span class="day-chip" onclick="toggleDay(this)">Sat</span>
+        <span class="day-chip" onclick="toggleDay(this)">Sun</span>
+      </div>
+    </div>
+
+    <div class="row-3">
+      <div class="field">
+        <label>Start time</label>
+        <input type="text" placeholder="9:00 AM" />
+      </div>
+      <div class="field">
+        <label>End time</label>
+        <input type="text" placeholder="5:00 PM" />
+      </div>
+      <div class="field">
+        <label>Time zone</label>
+        <select>
+          <option>EST</option><option>CST</option><option>MST</option><option>PST</option><option>Other</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 6: ANYTHING ELSE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Anything else?</h2>
+    </div>
+    <p class="hint">Optional. Share anything we haven't asked about, or drop in a file (JD, org chart, sample work — whatever's helpful).</p>
+
+    <div class="field">
+      <textarea placeholder="Anything else we should know..."></textarea>
+    </div>
+
+    <div class="field">
+      <div class="upload-zone">
+        <div class="icon">⬆</div>
+        <div><strong>Browse files</strong> or drag and drop here</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: AGREEMENT -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Agreement</h2>
+    </div>
+    <p class="hint">One quick check and we're ready to start.</p>
+
+    <div class="agreement">
+      <input type="checkbox" id="agree" />
+      <label for="agree" style="font-weight: 400; margin: 0; color: var(--navy-soft);">
+        I agree to Sagan's <a href="#">hiring request terms</a> — including credit charges, the 5-day cancellation window, and Enhanced Search approval. <span class="req">*</span>
+      </label>
+    </div>
+  </div>
+
+  <div class="submit-bar">
+    <button class="btn-ghost">Talk to your Account Manager instead</button>
+    <button class="btn-primary">Submit hiring request →</button>
+  </div>
+
+</div>
+
+<script>
+  function pickFocus(el) {
+    const selected = document.querySelectorAll('.focus-option.selected');
+    if (el.classList.contains('selected')) {
+      el.classList.remove('selected');
+    } else if (selected.length < 2) {
+      el.classList.add('selected');
+    }
+  }
+
+  function toggleDay(el) {
+    el.classList.toggle('selected');
+  }
+</script>
+
+</body>
+</html>
